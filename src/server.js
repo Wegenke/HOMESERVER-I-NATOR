@@ -1,8 +1,6 @@
 // Server Info
 require('dotenv').config()
-
 const PORT = process.env.SERVER_PORT
-const ENV = process.env.ENV
 
 // Express Info
 const express = require('express')
@@ -21,8 +19,6 @@ app.use(cors())
 app.use(express.json())
 app.use('/get',getRouter)
 app.use('/post',postRouter)
-
-
 
 // Express Listen Info
 app.listen(PORT, ()=> {

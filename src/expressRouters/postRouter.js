@@ -10,13 +10,13 @@ require('dotenv').config()
 
 // Posts Routes
 router.post('/add_chore', (req, res)=>{
-  const {chore_name, chore_frequency, responsible_party} = req.body
+  const {chore_name, chore_value, completed_by = 1} = req.body
   knex('chores')
     .insert({
       chore_name:chore_name.toLowerCase().replaceAll(" ","_"),
-      chore_frequency:chore_frequency.toLowerCase().replaceAll(" ","_"),
+      chore_value:chore_value,
       completed:false,
-      responsible_party:responsible_party
+      completed_by:completed_by
     })
     .then(chores => res.status(200).send(`${chore_name} chore added!`))
     .catch(err => {res.status(404).send(err)})
@@ -26,8 +26,8 @@ router.post('/add_animal', (req, res)=>{
   const {name, type, age} = req.body
   knex('animals')
     .insert({
-      name:name,
-      type:type,
+      name:name.toLowerCase().replaceAll(" ","_"),
+      type:type.toLowerCase().replaceAll(" ","_"),
       age:age
     })
     .then(res.status(200).send(`${name} added!`))
@@ -39,8 +39,8 @@ router.post('/add_plant', (req, res)=>{
   knex('plants')
     .insert({
       edible:edible,
-      name:name,
-      location:location,
+      name:name.toLowerCase().replaceAll(" ","_"),
+      location:location.toLowerCase().replaceAll(" ","_"),
       bucket:bucket
     })
     .then(res.status(200).send(`${name} added!`))

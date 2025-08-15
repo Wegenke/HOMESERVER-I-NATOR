@@ -31,13 +31,6 @@ router.get('/human_ids', (req, res) =>{
   knex('humans').select('id','name','nick_name').then(x => res.json(x))
 })
 
-router.get('/chore_data', (req,res)=>{
-  knex('chores')
-  .join('humans','chores.responsible_party', 'humans.id')
-  .select('chore_name as chore', 'name', 'chore_frequency as frequency', 'completed')
-  .then(out => res.json(out))
-})
-
 router.get('/chore/:id', (req,res) =>{
   const {id} = req.params
   getMaxId('chores')
