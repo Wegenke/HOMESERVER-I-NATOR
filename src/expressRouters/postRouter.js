@@ -49,7 +49,6 @@ router.post('/add_plant', (req, res)=>{
 
 router.post('/add_human', (req, res)=>{
   const {type, name, nick_name} = req.body
-  // const name = `${first_name.toLowerCase().charAt(0).toUpperCase + first_name.slice(1)} ${last_name.toLowerCase().charAt(0).toUpperCase + last_name.slice(1)}`
   knex('humans')
     .insert({
       type:type.toLowerCase().replaceAll(" ","_"),
