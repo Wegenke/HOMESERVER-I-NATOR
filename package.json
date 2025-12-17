@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "start": "npm run spinup && nodemon ./src/server.js",
+    "start":"nodemon ./src/server.js",
+    "fullstart": "npm run spinup && nodemon ./src/server.js",
     "spinup": "npx knex migrate:latest && npx knex seed:run"
   },
   "keywords": [],
