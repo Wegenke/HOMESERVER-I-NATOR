@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon ./src/server.js"
+    "start": "npm run spinup && nodemon ./src/server.js",
+    "spinup": "npx knex migrate:latest && npx knex seed:run"
   },
   "keywords": [],
   "author": "Matthew Wegenke",
