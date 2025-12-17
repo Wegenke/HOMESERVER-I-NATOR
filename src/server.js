@@ -13,12 +13,14 @@ require('dotenv').config()
 //Express MicroServices
 const getRouter = require('./expressRouters/getRouter')
 const postRouter = require('./expressRouters/postRouter')
+const typesRouter = require('./expressRouters/typesRouter')
 
 // App Uses
 app.use(cors())
 app.use(express.json())
 app.use('/get',getRouter)
 app.use('/post',postRouter)
+app.use('/types',typesRouter)
 
 // Express Listen Info
 app.listen(PORT, ()=> {
