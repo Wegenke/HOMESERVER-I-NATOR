@@ -13,7 +13,7 @@ module.exports = (knex) => {
         completed:false,
         completed_by:0
       })
-      .then(chores => res.status(200).send(`${chore_name} chore added!`))
+      .then(res.status(200).send(`${chore_name} chore added!`))
       .catch(err => {res.status(404).send(err)})
   })
 
@@ -56,6 +56,7 @@ module.exports = (knex) => {
       })
       .then(res.status(200).send(`${name} added!`))
       .catch(err => res.status(404).send(err))
-  })    
+  })
+
   return router;
 }

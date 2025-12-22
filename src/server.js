@@ -1,6 +1,6 @@
 // Server Info
 require('dotenv').config()
-const ENV = process.env.ENV 
+const ENV = process.env.ENV
 const knex = require('knex')(require('../knexfile.js')[ENV])
 
 
@@ -20,13 +20,15 @@ require('dotenv').config()
 const getRouter = require('./expressRouters/getRouter')
 const postRouter = require('./expressRouters/postRouter')
 const typesRouter = require('./expressRouters/typesRouter')
+const listRouter = require('./expressRouters/listRouter.js')
 
 // App Uses
 app.use(cors())
 app.use(express.json())
-app.use('/get',getRouter)
-app.use('/post',postRouter)
-app.use('/api/types',typesRouter(knex))
+app.use('/get',getRouter(knex))
+app.use('/post',postRouter(knex))
+app.use('/types',typesRouter(knex))
+app.use('/api',listRouter(knex))
 
 // Express Listen Info
 app.listen(PORT, ()=> {
